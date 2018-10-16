@@ -1,0 +1,5 @@
+上面介绍了改造线程和线程池的方式，并且通过建一个同样的Java类来覆盖Jar包中的实现，感觉有点投机取巧，其实不用这么麻烦，Hystrix默认提供了HystrixPlugins类，可以让用户自定义线程池，下面来看看怎么使用：
+
+在启动之前调用进行注册自定义实现的逻辑：
+
+HystrixPlugins.getInstance().registerConcurrencyStrategy(new ThreadLocalHystrixConcurrencyStrategy());
